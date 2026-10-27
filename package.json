@@ -1,0 +1,31 @@
+{
+  "name": "sahayak",
+  "version": "1.0.0",
+  "description": "Safe, human-in-the-loop Chrome side-panel AI agent for reading, understanding, and acting on web pages.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/post-build.js",
+    "generate-icons": "node scripts/generate-icons.js",
+    "zip": "node scripts/package-zip.js",
+    "test": "node --test tests/unit/*.test.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "manifest-v3",
+    "ai-agent",
+    "gemini",
+    "human-in-the-loop",
+    "browser-agent",
+    "side-panel"
+  ],
+  "author": "Sahayak Team",
+  "license": "MIT",
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
+

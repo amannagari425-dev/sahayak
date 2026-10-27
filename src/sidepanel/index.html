@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahayak (सहायक)</title>
+  <link rel="stylesheet" href="./sidepanel.css">
+</head>
+<body>
+  <div id="app" class="app-container">
+    <!-- Header Subsystem -->
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="brand-info">
+          <img src="../../assets/icon-48.png" alt="Sahayak Logo" class="brand-icon">
+          <div>
+            <h1 class="brand-title">Sahayak <span class="brand-hindi">सहायक</span></h1>
+            <span class="brand-tagline">Safe Browser AI Assistant</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="btnSettings" class="btn-icon" title="Extension Settings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Tab & Lang Controls -->
+      <div class="controls-row">
+        <div id="activeTabBadge" class="tab-badge" title="Active Tab">
+          <span class="status-dot online"></span>
+          <span id="tabDomainText" class="tab-domain">Detecting page...</span>
+        </div>
+
+        <div class="lang-segmented-control" role="group" aria-label="Language selector">
+          <button id="langEnglish" class="lang-btn active" data-lang="en">English</button>
+          <button id="langHinglish" class="lang-btn" data-lang="hinglish">Hinglish</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Strip -->
+    <nav class="nav-strip">
+      <button class="nav-tab active" data-target="viewSummary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        Summarise
+      </button>
+      <button class="nav-tab" data-target="viewChat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Chat
+      </button>
+      <button class="nav-tab" data-target="viewVision">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        Screen
+      </button>
+      <button class="nav-tab" data-target="viewActions">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        Actions
+      </button>
+    </nav>
+
+    <!-- Main Content Stage -->
+    <main class="main-content">
+      <!-- 1. Summarise View -->
+      <section id="viewSummary" class="view-panel active">
+        <div class="welcome-card">
+          <div class="card-hero">
+            <div class="hero-badge">Phase 1 • The Eyes</div>
+            <h2>Read & Understand</h2>
+            <p>Distill long articles into a 1-line TL;DR, 5 key points, and next steps — in English or Hinglish.</p>
+          </div>
+          <button id="btnSummarizePage" class="btn-primary w-full">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            Summarise This Page
+          </button>
+        </div>
+
+        <div id="summaryResults" class="results-container hidden">
+          <!-- Populated in Step 1.4 / 1.5 -->
+        </div>
+      </section>
+
+      <!-- 2. Chat View -->
+      <section id="viewChat" class="view-panel">
+        <div class="empty-state">
+          <h3>Grounded Page Chat</h3>
+          <p>Ask follow-up questions strictly about the open tab. Unlocks in Week 2.</p>
+        </div>
+      </section>
+
+      <!-- 3. Screen View -->
+      <section id="viewVision" class="view-panel">
+        <div class="empty-state">
+          <h3>Screenshot & Visual Q&A</h3>
+          <p>Capture visible browser charts and diagrams for multimodal analysis. Unlocks in Week 2.</p>
+        </div>
+      </section>
+
+      <!-- 4. Actions View -->
+      <section id="viewActions" class="view-panel">
+        <div class="empty-state">
+          <h3>Human-in-the-Loop Browser Actions</h3>
+          <p>Detect interactive elements with numbered badges and approve each step. Unlocks in Week 3.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Safety Banner Footer -->
+    <footer class="app-footer">
+      <div class="safe-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
+        <span>HITL Safe Mode Active • Explicit Approval Required</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./sidepanel.js"></script>
+</body>
+</html>
+
